@@ -1,0 +1,30 @@
+{
+  "name": "@mstssk/cleandir",
+  "version": "0.0.1",
+  "description": "Cleanup directories.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=12.10.0"
+  },
+  "bin": {
+    "cleandir": "./cleandir"
+  },
+  "scripts": {
+    "fmt": "npx prettier --write .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mstssk/cleandir.git"
+  },
+  "keywords": [
+    "clean",
+    "directory"
+  ],
+  "author": "@mstssk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mstssk/cleandir/issues"
+  },
+  "homepage": "https://github.com/mstssk/cleandir#readme"
+}

@@ -1,2 +1,3 @@
 # cleandir
+
 Cleanup directories.
