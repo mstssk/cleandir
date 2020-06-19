@@ -5,7 +5,7 @@
 - Single purpose and feature.
   - Empty compiler's output directories.
   - Remain specified top directory.
-      - `.gitkeep` and `.keep` is also remained.
+    - `.gitkeep` and `.keep` is also remained.
 - Very tiny!
   - No dependencies.
 
@@ -36,7 +36,7 @@ In your code:
 ```js
 const { cleandir } = require("@mstssk/cleandir");
 
-(async function() {
-    await cleandir(dirPaths);
+(async function () {
+  await cleandir(dirPaths);
 })();
 ```
