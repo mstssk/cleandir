@@ -7,9 +7,12 @@ const IGNORE_FILES = [".keep", ".gitkeep"];
 /**
  * Cleanup directories.
  *
- * @param {string[]} dirs
+ * @param {string | string[]} dirs
  */
 async function cleandir(dirs) {
+  if (typeof dirs === "string") {
+    dirs = [dirs];
+  }
   for (const dir of dirs) {
     await _cleandir(dir);
   }

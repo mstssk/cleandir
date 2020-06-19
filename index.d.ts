@@ -1,1 +1,1 @@
-export function cleandir(dirs: string[]): Promise<void>;
+export function cleandir(dirs: string | string[]): Promise<void>;
