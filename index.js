@@ -23,14 +23,19 @@ async function cleandir(dirs) {
  * @param {string} dir
  */
 async function _cleandir(dir) {
-  const stat = await fsStatIgnoreENOENT(dir);
-  if (stat == null) {
-    return;
+  let files;
+  try {
+    files = await fs.readdir(dir, { withFileTypes: true });
+  } catch (err) {
+    switch (err.code) {
+      case "ENOENT":
+        return null; // Noop when directory don't exists.
+      case "ENOTDIR":
+        throw new Error(`'${dir}' is not a directory.`, err);
+      default:
+        throw err;
+    }
   }
-  if (!stat.isDirectory()) {
-    throw new Error(`'${dir}' is not a directory.`);
-  }
-  let files = await fs.readdir(dir, { withFileTypes: true });
   files = files.filter((f) => !IGNORE_FILES.includes(f.name));
   const promises = files.map((file) => {
     const filePath = path.join(dir, file.name);
@@ -41,18 +46,6 @@ async function _cleandir(dir) {
     }
   });
   return Promise.all(promises);
-}
-
-async function fsStatIgnoreENOENT(path) {
-  try {
-    return await fs.stat(path);
-  } catch (err) {
-    if (err.code === "ENOENT") {
-      // Noop when directory don't exists.
-      return null;
-    }
-    throw err;
-  }
 }
 
 exports.cleandir = cleandir;
