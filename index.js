@@ -1,4 +1,3 @@
-const fsSync = require("fs");
 const fs = require("fs").promises;
 const path = require("path");
 
@@ -24,22 +23,35 @@ async function cleandir(dirs) {
  * @param {string} dir
  */
 async function _cleandir(dir) {
-  if (!fsSync.existsSync(dir)) {
+  const stat = await fsStatIgnoreENOENT(dir);
+  if (stat == null) {
     return;
   }
-  const stat = await fs.stat(dir);
   if (!stat.isDirectory()) {
     throw new Error(`'${dir}' is not a directory.`);
   }
   let files = await fs.readdir(dir, { withFileTypes: true });
   files = files.filter((f) => !IGNORE_FILES.includes(f.name));
-  for (const file of files) {
+  const promises = files.map((file) => {
     const filePath = path.join(dir, file.name);
     if (file.isDirectory()) {
-      await fs.rmdir(filePath, { recursive: true });
+      return fs.rmdir(filePath, { recursive: true });
     } else {
-      await fs.unlink(filePath);
+      return fs.unlink(filePath);
     }
+  });
+  return Promise.all(promises);
+}
+
+async function fsStatIgnoreENOENT(path) {
+  try {
+    return await fs.stat(path);
+  } catch (err) {
+    if (err.code === "ENOENT") {
+      // Noop when directory don't exists.
+      return null;
+    }
+    throw err;
   }
 }
 
