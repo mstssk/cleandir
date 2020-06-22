@@ -4,7 +4,7 @@
   "description": "Cleanup directories.",
   "main": "index.js",
   "engines": {
-    "node": ">=12.10.0"
+    "node": ">=12.12.0"
   },
   "bin": {
     "cleandir": "./cleandir"

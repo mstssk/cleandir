@@ -15,7 +15,7 @@ Inspired by https://stackoverflow.com/a/57866165
 
 ## Install
 
-This package requires Node v12.10.0 or higher.
+This package requires Node.js v12.12.0 or higher.
 
 ```
 $ npm install --save-dev @mstssk/cleandir
