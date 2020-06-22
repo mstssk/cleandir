@@ -22,6 +22,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           prettier: true
           prettier_command_prefix: npx
+          prettier_args: "--end-of-line auto" # Ignore newline chars problems in Windows.
       - run: npm ci --production
       - run: npm cit
         working-directory: ./example
