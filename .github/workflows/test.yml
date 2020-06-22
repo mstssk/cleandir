@@ -1,0 +1,28 @@
+name: Test
+on:
+  - push
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [12, 14]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm cit
+      - name: Run linters
+        if: ${{ always() }}
+        uses: samuelmeuli/lint-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prettier: true
+          prettier_command_prefix: npx
+          prettier_args: "--end-of-line auto" # Ignore newline chars problems in Windows.
+      - run: npm ci --production
+      - run: npm cit
+        working-directory: ./example
