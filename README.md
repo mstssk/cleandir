@@ -1,5 +1,7 @@
 # cleandir
 
+![Test](https://github.com/mstssk/cleandir/workflows/Test/badge.svg)
+
 `cleandir` just empty output directories.
 
 - Single purpose and feature.
