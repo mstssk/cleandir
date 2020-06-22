@@ -11,6 +11,8 @@
 - Very tiny!
   - No dependencies.
 
+Inspired by https://stackoverflow.com/a/57866165
+
 ## Install
 
 This package requires Node v12.10.0 or higher.
