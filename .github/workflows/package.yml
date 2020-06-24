@@ -1,7 +1,9 @@
 name: Package
 on:
+  push:
+    tags: ["v**"] # Dry-run when pushed tags.
   release:
-    types: [published, created]
+    types: [published] # Publish when created releases.
 jobs:
   release:
     env:
