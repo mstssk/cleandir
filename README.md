@@ -44,3 +44,7 @@ const { cleandir } = require("@mstssk/cleandir");
   await cleandir(dirPaths);
 })();
 ```
+
+## Changelog
+
+See https://github.com/mstssk/cleandir/releases
