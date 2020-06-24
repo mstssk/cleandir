@@ -26,6 +26,7 @@ jobs:
         with:
           node-version: 12
           registry-url: ${{ matrix.registry.url }}
+          scope: "@mstssk"
       - name: Test
         run: npm cit
       - name: Publish ${{ env.DRY_RUN }}
