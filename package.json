@@ -32,5 +32,8 @@
     "copyfiles": "^2.3.0",
     "glob": "^7.1.6",
     "jest": "^26.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

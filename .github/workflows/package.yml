@@ -1,0 +1,37 @@
+name: Package
+on:
+  release:
+    types: [published, created]
+jobs:
+  release:
+    env:
+      DRY_RUN: "${{ ((github.event_name == 'release' && github.event.action == 'published') && '') || '--dry-run' }}"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        registry:
+          - npmjs:
+              name: npmjs
+              url: null # npmjs is default.
+              token: NPM_TOKEN
+          - github:
+              name: github
+              url: "https://npm.pkg.github.com"
+              token: GITHUB_TOKEN
+    steps:
+      - name: "Description: ${{ github.event_name }} ${{ github.event.action }} => npm publish ${{ env.DRY_RUN }}"
+        run: ":"
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: ${{ matrix.registry_url }}
+      - name: Test
+        run: npm cit
+      - name: Publish ${{ env.DRY_RUN }}
+        run: |
+          npx can-npm-publish
+          npm ci --production
+          npm publish $DRY_RUN
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets[matrix.registry_token] }}
