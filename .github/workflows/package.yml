@@ -16,6 +16,7 @@ jobs:
         with:
           node-version: 12
           registry-url: "https://registry.npmjs.org"
+          scope: "@mstssk"
       - run: npm cit
       - name: Publish ${{ env.DRY_RUN }}
         run: |

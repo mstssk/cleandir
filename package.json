@@ -1,5 +1,5 @@
 {
-  "name": "cleandir",
+  "name": "@mstssk/cleandir",
   "version": "1.0.0",
   "description": "Cleanup directories.",
   "main": "index.js",

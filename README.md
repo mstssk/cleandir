@@ -19,7 +19,7 @@ Inspired by https://stackoverflow.com/a/57866165
 This package requires Node.js v12.12.0 or higher.
 
 ```
-$ npm install --save-dev cleandir
+$ npm install --save-dev @mstssk/cleandir
 ```
 
 ### Install from GitHub Package
@@ -47,7 +47,7 @@ In npm-run-script:
 In your code:
 
 ```js
-const { cleandir } = require("cleandir");
+const { cleandir } = require("@mstssk/cleandir");
 
 (async function () {
   await cleandir(dirPaths);
