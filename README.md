@@ -1,6 +1,7 @@
 # cleandir
 
 ![Test](https://github.com/mstssk/cleandir/workflows/Test/badge.svg)
+[![npm version](https://badge.fury.io/js/cleandir.svg)](https://badge.fury.io/js/cleandir)
 
 `cleandir` just empty output directories.
 
@@ -18,8 +19,16 @@ Inspired by https://stackoverflow.com/a/57866165
 This package requires Node.js v12.12.0 or higher.
 
 ```
-$ npm install --save-dev @mstssk/cleandir
+$ npm install --save-dev cleandir
 ```
+
+### Install from GitHub Package
+
+You can install from GitHub Package.
+See a package page and GitHub Package document.
+
+- Package: https://github.com/mstssk/cleandir/packages/285984
+- Document: https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#installing-a-package
 
 ## Usage
 
@@ -38,7 +47,7 @@ In npm-run-script:
 In your code:
 
 ```js
-const { cleandir } = require("@mstssk/cleandir");
+const { cleandir } = require("cleandir");
 
 (async function () {
   await cleandir(dirPaths);
