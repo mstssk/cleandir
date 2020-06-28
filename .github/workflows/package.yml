@@ -4,35 +4,42 @@ on:
     tags: ["v**"] # Dry-run when pushed tags.
   release:
     types: [published] # Publish when created releases.
+env:
+  DRY_RUN: "${{ ((github.event_name == 'release' && github.event.action == 'published') && ' ') || '--dry-run' }}"
 jobs:
-  release:
-    env:
-      DRY_RUN: "${{ ((github.event_name == 'release' && github.event.action == 'published') && ' ') || '--dry-run' }}"
+  release_npm:
+    name: "Publish to npmjs.com"
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        registry:
-          - name: npmjs
-            url: "https://registry.npmjs.org"
-            token: NPM_TOKEN
-          - name: github
-            url: "https://npm.pkg.github.com"
-            token: GITHUB_TOKEN
     steps:
-      - name: "Description: ${{ github.event_name }} ${{ github.event.action }} => npm publish ${{ env.DRY_RUN }} to ${{ matrix.registry.name }}"
-        run: ":"
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: ${{ matrix.registry.url }}
-          scope: "@mstssk"
-      - name: Test
-        run: npm cit
+          registry-url: "https://registry.npmjs.org"
+      - run: npm cit
       - name: Publish ${{ env.DRY_RUN }}
         run: |
           npx can-npm-publish
           npm ci --production
           npm publish $DRY_RUN
         env:
-          NODE_AUTH_TOKEN: ${{ secrets[matrix.registry.token] }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  release_github:
+    name: "Publish to GitHub Package"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: node .github/workflows/prepare_github_package.js
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@mstssk"
+      - run: npm cit
+      - name: Publish ${{ env.DRY_RUN }}
+        run: |
+          npx can-npm-publish
+          npm ci --production
+          npm publish $DRY_RUN
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
