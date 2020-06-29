@@ -1,7 +1,7 @@
 # cleandir
 
 ![Test](https://github.com/mstssk/cleandir/workflows/Test/badge.svg)
-[![npm version](https://badge.fury.io/js/cleandir.svg)](https://badge.fury.io/js/cleandir)
+[![npm version](https://badge.fury.io/js/%40mstssk%2Fcleandir.svg)](https://badge.fury.io/js/%40mstssk%2Fcleandir)
 
 `cleandir` just empty output directories.
 
