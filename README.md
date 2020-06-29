@@ -54,6 +54,10 @@ const { cleandir } = require("@mstssk/cleandir");
 })();
 ```
 
+### More complicated deleting?
+
+I recommend to use [rimraf](https://www.npmjs.com/package/rimraf), if you want conditional deleting.
+
 ## Changelog
 
 See https://github.com/mstssk/cleandir/releases
