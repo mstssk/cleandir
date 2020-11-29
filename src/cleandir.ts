@@ -1,5 +1,5 @@
-const fs = require("fs").promises;
-const path = require("path");
+import { promises as fs } from "fs";
+import path from "path";
 
 const IGNORE_FILES = [".keep", ".gitkeep"];
 
