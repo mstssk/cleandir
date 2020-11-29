@@ -6,7 +6,7 @@ const glob = require("glob");
  * Copyfiles wrapper.
  *
  * @param {string[]} paths
- * @param {__copyfiles.Options | number} options
+ * @param {copyfiles.Options | number} options
  * @returns {Promise<void>}
  */
 exports.copyfiles = promisify(copyfiles);
@@ -15,7 +15,7 @@ exports.copyfiles = promisify(copyfiles);
  * Glob wrapper.
  *
  * @param {string} pattern
- * @param {__glob.IOptions} options
+ * @param {glob.IOptions} options
  * @returns {Promise<string[]>} matches
  */
 exports.glob = promisify(glob);
