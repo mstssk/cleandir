@@ -2,35 +2,36 @@
   "name": "@mstssk/cleandir",
   "version": "1.0.2",
   "description": "Cleanup directories.",
-  "main": "dist/cleandir.js",
-  "engines": {
-    "node": ">=12.12.0"
-  },
-  "bin": {
-    "cleandir": "bin/cleandir.js"
-  },
-  "scripts": {
-    "build": "tsc",
-    "fmt": "npx prettier --write .",
-    "lint": "npx prettier --check .",
-    "test": "jest",
-    "pretest": "npm run build"
-  },
-  "types": "dist/cleandir.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mstssk/cleandir.git"
-  },
   "keywords": [
     "clean",
     "directory"
   ],
-  "author": "@mstssk",
-  "license": "MIT",
+  "homepage": "https://github.com/mstssk/cleandir#readme",
   "bugs": {
     "url": "https://github.com/mstssk/cleandir/issues"
   },
-  "homepage": "https://github.com/mstssk/cleandir#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mstssk/cleandir.git"
+  },
+  "license": "MIT",
+  "author": "@mstssk",
+  "main": "dist/cleandir.js",
+  "types": "dist/cleandir.d.ts",
+  "bin": {
+    "cleandir": "bin/cleandir.js"
+  },
+  "files": [
+    "bin/",
+    "dist/"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "fmt": "npx prettier --write .",
+    "lint": "npx prettier --check .",
+    "pretest": "npm run build",
+    "test": "jest"
+  },
   "devDependencies": {
     "@types/node": "^14.14.10",
     "copyfiles": "^2.4.1",
@@ -38,11 +39,10 @@
     "jest": "^26.6.3",
     "typescript": "^4.1.2"
   },
+  "engines": {
+    "node": ">=12.12.0"
+  },
   "publishConfig": {
     "access": "public"
-  },
-  "files": [
-    "bin/",
-    "dist/"
-  ]
+  }
 }
