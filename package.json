@@ -11,6 +11,7 @@
   },
   "scripts": {
     "fmt": "npx prettier --write .",
+    "lint": "npx prettier --check .",
     "test": "jest"
   },
   "types": "index.d.ts",
