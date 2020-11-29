@@ -1,4 +1,4 @@
-const { cleandir } = require("../index");
+const { cleandir } = require("../");
 
 test("Should throw error when a arg is not directory.", async () => {
   await expect(cleandir("README.md")).rejects.toThrow(

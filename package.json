@@ -2,19 +2,19 @@
   "name": "@mstssk/cleandir",
   "version": "1.0.2",
   "description": "Cleanup directories.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "engines": {
     "node": ">=12.12.0"
   },
   "bin": {
-    "cleandir": "./bin/cleandir.js"
+    "cleandir": "bin/cleandir.js"
   },
   "scripts": {
     "fmt": "npx prettier --write .",
     "lint": "npx prettier --check .",
     "test": "jest"
   },
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mstssk/cleandir.git"
