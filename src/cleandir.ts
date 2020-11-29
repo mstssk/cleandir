@@ -8,7 +8,7 @@ const IGNORE_FILES = [".keep", ".gitkeep"];
  *
  * @param {string | string[]} dirs
  */
-async function cleandir(dirs) {
+export async function cleandir(dirs: string | string[]) {
   if (typeof dirs === "string") {
     dirs = [dirs];
   }
@@ -22,7 +22,7 @@ async function cleandir(dirs) {
  *
  * @param {string} dirPath
  */
-async function _cleandir(dirPath) {
+async function _cleandir(dirPath: string) {
   let dir;
   try {
     dir = await fs.opendir(dirPath);
@@ -31,7 +31,7 @@ async function _cleandir(dirPath) {
       case "ENOENT":
         return null; // Noop when directory don't exists.
       case "ENOTDIR":
-        throw new Error(`'${dirPath}' is not a directory.`, err);
+        throw new Error(`'${dirPath}' is not a directory.`);
       default:
         throw err;
     }
@@ -48,5 +48,3 @@ async function _cleandir(dirPath) {
     }
   }
 }
-
-exports.cleandir = cleandir;

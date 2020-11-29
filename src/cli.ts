@@ -1,4 +1,4 @@
-const { cleandir } = require("./index");
+import { cleandir } from "./cleandir";
 
 const args = process.argv.slice(2);
 if (args.length === 0) {
