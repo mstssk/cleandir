@@ -6,7 +6,11 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "npm run build && node index.js"
+    "cleandir": "cleandir dist",
+    "pretest": "npm run build",
+    "test": "npm run test:code && npm run test:cli",
+    "test:code": "node index.js",
+    "test:cli": "npm run cleandir"
   },
   "author": "",
   "license": "MIT",
