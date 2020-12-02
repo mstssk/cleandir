@@ -21,7 +21,8 @@ jobs:
       - name: Publish ${{ env.DRY_RUN }}
         run: |
           npx can-npm-publish
-          npm ci --production
+          npm ci
+          npm run build
           npm publish $DRY_RUN
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -40,7 +41,8 @@ jobs:
       - name: Publish ${{ env.DRY_RUN }}
         run: |
           npx can-npm-publish
-          npm ci --production
+          npm ci
+          npm run build
           npm publish $DRY_RUN
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
