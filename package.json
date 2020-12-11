@@ -16,19 +16,19 @@
   },
   "license": "MIT",
   "author": "@mstssk",
-  "main": "dist/cleandir.js",
+  "main": "lib/cleandir.js",
   "module": "esm/cleandir.js",
-  "types": "dist/cleandir.d.ts",
+  "types": "lib/cleandir.d.ts",
   "bin": {
     "cleandir": "bin/cleandir.js"
   },
   "files": [
     "bin/",
-    "dist/",
+    "lib/",
     "esm/"
   ],
   "scripts": {
-    "prebuild": "rm -rf dist/* esm/*",
+    "prebuild": "rm -rf lib/* esm/*",
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "tsc",
     "build:esm": "tsc -p tsconfig.esm.json",
