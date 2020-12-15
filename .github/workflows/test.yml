@@ -16,7 +16,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: npm cit
       - run: npm ci --production
-      - run: npm cit
+      - run: npm it
         working-directory: ./example
   lint:
     runs-on: ubuntu-latest

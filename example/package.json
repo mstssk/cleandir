@@ -1,23 +1,23 @@
 {
   "name": "example",
   "version": "1.0.0",
-  "description": "",
   "private": true,
+  "description": "",
+  "license": "MIT",
+  "author": "",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
     "cleandir": "cleandir dist",
     "pretest": "npm run build",
     "test": "npm run test:code && npm run test:cli",
-    "test:code": "node index.js",
-    "test:cli": "npm run cleandir"
-  },
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "typescript": "^3.9.5"
+    "test:cli": "npm run cleandir",
+    "test:code": "node index.js"
   },
   "dependencies": {
     "@mstssk/cleandir": "file:.."
+  },
+  "devDependencies": {
+    "typescript": "^4.1.3"
   }
 }
