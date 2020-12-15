@@ -17,21 +17,17 @@
   "license": "MIT",
   "author": "@mstssk",
   "main": "lib/cleandir.js",
-  "module": "esm/cleandir.js",
   "types": "lib/cleandir.d.ts",
   "bin": {
     "cleandir": "bin/cleandir.js"
   },
   "files": [
     "bin/",
-    "lib/",
-    "esm/"
+    "lib/"
   ],
   "scripts": {
-    "prebuild": "rm -rf lib/* esm/*",
-    "build": "npm run build:cjs && npm run build:esm",
-    "build:cjs": "tsc",
-    "build:esm": "tsc -p tsconfig.esm.json",
+    "prebuild": "rm -rf lib/*",
+    "build": "tsc",
     "fmt": "npx prettier --write .",
     "lint": "npx prettier --check .",
     "pretest": "npm run build",

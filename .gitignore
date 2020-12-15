@@ -82,7 +82,6 @@ typings/
 .nuxt
 dist
 lib
-esm
 
 # Gatsby files
 .cache/
