@@ -18,11 +18,13 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           scope: "@mstssk"
       - run: npm cit
-      - name: Publish ${{ env.DRY_RUN }}
+      - run: echo "TAG=$(node .github/workflows/publish-tag.js ${GITHUB_REF#refs/*/})" >> $GITHUB_ENV
+      - name: Publish --tag ${{ env.TAG }} ${{ env.DRY_RUN }}
         run: |
           npx can-npm-publish
-          npm ci --production
-          npm publish $DRY_RUN
+          npm ci
+          npm run build
+          npm publish --tag $TAG $DRY_RUN
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   release_github:
@@ -37,10 +39,12 @@ jobs:
           registry-url: "https://npm.pkg.github.com"
           scope: "@mstssk"
       - run: npm cit
-      - name: Publish ${{ env.DRY_RUN }}
+      - run: echo "TAG=$(node .github/workflows/publish-tag.js ${GITHUB_REF#refs/*/})" >> $GITHUB_ENV
+      - name: Publish --tag ${{ env.TAG }} ${{ env.DRY_RUN }}
         run: |
           npx can-npm-publish
-          npm ci --production
-          npm publish $DRY_RUN
+          npm ci
+          npm run build
+          npm publish --tag $TAG $DRY_RUN
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

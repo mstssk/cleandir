@@ -1,43 +1,21 @@
-const __copyfiles = require("copyfiles");
-const __glob = require("glob");
+const { promisify } = require("util");
+const copyfiles = require("copyfiles");
+const glob = require("glob");
 
 /**
  * Copyfiles wrapper.
  *
  * @param {string[]} paths
- * @param {__copyfiles.Options | number} options
+ * @param {copyfiles.Options | number} options
  * @returns {Promise<void>}
  */
-function copyfiles(paths, options) {
-  return new Promise((resolve, reject) => {
-    __copyfiles(paths, options, (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
-    });
-  });
-}
+exports.copyfiles = promisify(copyfiles);
 
 /**
  * Glob wrapper.
  *
  * @param {string} pattern
- * @param {__glob.IOptions} options
+ * @param {glob.IOptions} options
  * @returns {Promise<string[]>} matches
  */
-function glob(pattern, options) {
-  return new Promise((resolve, reject) => {
-    __glob(pattern, options, (err, matches) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(matches);
-      }
-    });
-  });
-}
-
-exports.copyfiles = copyfiles;
-exports.glob = glob;
+exports.glob = promisify(glob);

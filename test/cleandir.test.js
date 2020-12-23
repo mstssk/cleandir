@@ -1,6 +1,6 @@
 const fs = require("fs").promises;
 const { copyfiles, glob } = require("./utils");
-const { cleandir } = require("../index");
+const { cleandir } = require("../");
 
 const TARGET_DIR1 = "./test/target1";
 const TARGET_DIR2 = "./test/target2";
