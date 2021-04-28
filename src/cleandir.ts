@@ -42,7 +42,7 @@ async function _cleandir(dirPath: string): Promise<void> {
     }
     const filePath = path.join(dirPath, file.name);
     if (file.isDirectory()) {
-      await fs.rmdir(filePath, { recursive: true });
+      await (fs.rm || fs.rmdir)(filePath, { recursive: true });
     } else {
       await fs.unlink(filePath);
     }
