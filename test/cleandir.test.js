@@ -12,8 +12,8 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  await fs.rmdir(TARGET_DIR1, { recursive: true });
-  await fs.rmdir(TARGET_DIR2, { recursive: true });
+  await (fs.rm || fs.rmdir)(TARGET_DIR1, { recursive: true });
+  await (fs.rm || fs.rmdir)(TARGET_DIR2, { recursive: true });
 });
 
 expect.extend({
