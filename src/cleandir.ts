@@ -26,7 +26,7 @@ async function _cleandir(dirPath: string): Promise<void> {
   let dir;
   try {
     dir = await fs.opendir(dirPath);
-  } catch (err) {
+  } catch (err: any) {
     switch (err.code) {
       case "ENOENT":
         return; // Noop when directory don't exists.
