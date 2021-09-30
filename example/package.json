@@ -18,6 +18,6 @@
     "@mstssk/cleandir": "file:.."
   },
   "devDependencies": {
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.3"
   }
 }
