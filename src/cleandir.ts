@@ -26,7 +26,10 @@ async function _cleandir(dirPath: string): Promise<void> {
   let dir;
   try {
     dir = await fs.opendir(dirPath);
-  } catch (err: any) {
+  } catch (err) {
+    if (!isNodeJsError(err)) {
+      throw err;
+    }
     switch (err.code) {
       case "ENOENT":
         return; // Noop when directory don't exists.
@@ -47,4 +50,15 @@ async function _cleandir(dirPath: string): Promise<void> {
       await fs.unlink(filePath);
     }
   }
+}
+
+/**
+ * Cheap type definition of Node.js Error.
+ * https://nodejs.org/api/errors.html#class-error
+ */
+interface NodeJsError {
+  code: string;
+}
+function isNodeJsError(err: unknown): err is NodeJsError {
+  return typeof (err as NodeJsError).code === "string";
 }
