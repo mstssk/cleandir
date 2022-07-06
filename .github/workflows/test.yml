@@ -26,8 +26,7 @@ jobs:
         with:
           node-version: 16
       - name: Run linters
-        uses: wearerequired/lint-action@v1
+        uses: wearerequired/lint-action@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           prettier: true
           prettier_command_prefix: npx
