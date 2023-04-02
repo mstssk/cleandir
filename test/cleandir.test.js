@@ -1,5 +1,7 @@
-const fs = require("fs").promises;
-const { copyfiles, glob } = require("./utils");
+const fs = require("node:fs").promises;
+const path = require("node:path");
+const { globSync } = require("glob");
+const { copyfiles } = require("./utils");
 const { cleandir } = require("../");
 
 const TARGET_DIR1 = "./test/target1";
@@ -23,9 +25,11 @@ expect.extend({
    * @param {string} dir A dir path.
    * @param {string[]} expected Contained file paths.
    */
-  async onlyContains(dir, expected) {
-    let files = await glob(`${dir}/**/*`, { dot: true });
-    files = files.map((f) => f.replace(new RegExp(`^${dir}/`), ""));
+  onlyContains(dir, expected) {
+    const files = globSync(`${dir}/**/*`, { dot: true })
+      .map((f) => path.relative(dir, f))
+      .sort();
+    expected = expected.map((f) => path.normalize(f)).sort(); // for Windows path segment separator.
     const pass = this.equals(files, expected);
     return {
       pass,
