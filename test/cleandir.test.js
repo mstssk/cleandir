@@ -41,7 +41,7 @@ expect.extend({
 
 test("Cleanup target dirs.", async () => {
   // BEFORE
-  await expect(TARGET_DIR1).onlyContains([
+  expect(TARGET_DIR1).onlyContains([
     ".dummy",
     ".gitkeep",
     ".keep",
@@ -52,11 +52,11 @@ test("Cleanup target dirs.", async () => {
     "hij/nop.txt",
     "hij/qrs.jpg",
   ]);
-  await expect(TARGET_DIR2).onlyContains(["foobar.txt"]);
+  expect(TARGET_DIR2).onlyContains(["foobar.txt"]);
 
   await cleandir([TARGET_DIR1, TARGET_DIR2]);
 
   // AFTER
-  await expect(TARGET_DIR1).onlyContains([".gitkeep", ".keep"]);
-  await expect(TARGET_DIR2).onlyContains([]);
+  expect(TARGET_DIR1).onlyContains([".gitkeep", ".keep"]);
+  expect(TARGET_DIR2).onlyContains([]);
 });
