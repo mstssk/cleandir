@@ -25,8 +25,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - run: npm ci
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
           prettier: true
-          prettier_command_prefix: npx
