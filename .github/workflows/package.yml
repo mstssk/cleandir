@@ -11,7 +11,7 @@ jobs:
     name: "Publish to npmjs.com"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -31,7 +31,7 @@ jobs:
     name: "Publish to GitHub Package"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: node .github/workflows/prepare_github_package.js
       - uses: actions/setup-node@v3
         with:
