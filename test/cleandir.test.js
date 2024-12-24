@@ -1,3 +1,5 @@
+import { test, expect, beforeEach, afterEach } from "vitest";
+
 const fs = require("node:fs").promises;
 const path = require("node:path");
 const { globSync } = require("glob");

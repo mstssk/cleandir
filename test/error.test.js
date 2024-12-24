@@ -1,3 +1,5 @@
+import { test, expect } from "vitest";
+
 const { cleandir } = require("../");
 
 test("Should throw error when a arg is not directory.", async () => {
