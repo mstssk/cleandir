@@ -4,7 +4,7 @@ const { cleandir } = require("../");
 
 test("Should throw error when a arg is not directory.", async () => {
   await expect(cleandir("README.md")).rejects.toThrow(
-    "'README.md' is not a directory."
+    "'README.md' is not a directory.",
   );
 });
 
