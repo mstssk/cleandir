@@ -26,7 +26,4 @@ jobs:
         with:
           node-version: "lts/*"
       - run: npm ci
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          prettier: true
+      - run: npm run lint
