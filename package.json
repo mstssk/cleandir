@@ -37,7 +37,7 @@
     "@types/node": "^20.17.28",
     "copyfiles": "^2.4.1",
     "glob": "^11.0.1",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.3",
     "semver": "^7.6.3",
     "typescript": "^5.7.2",
     "vitest": "^3.0.8"
