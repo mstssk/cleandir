@@ -4,14 +4,14 @@ on:
     tags: ["v**"] # Dry-run when pushed tags.
   release:
     types: [published] # Publish when created releases.
-permissions:
-  id-token: write # Required for OIDC
-  contents: read
 env:
   DRY_RUN: "${{ ((github.event_name == 'release' && github.event.action == 'published') && ' ') || '--dry-run' }}"
 jobs:
   release_npm:
     name: "Publish to npmjs.com"
+    permissions:
+      id-token: write # Required for OIDC
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
