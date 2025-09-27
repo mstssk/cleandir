@@ -4,6 +4,9 @@ on:
     tags: ["v**"] # Dry-run when pushed tags.
   release:
     types: [published] # Publish when created releases.
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
 env:
   DRY_RUN: "${{ ((github.event_name == 'release' && github.event.action == 'published') && ' ') || '--dry-run' }}"
 jobs:
@@ -25,8 +28,6 @@ jobs:
           npm ci
           npm run build
           npm publish --tag $TAG $DRY_RUN
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   release_github:
     name: "Publish to GitHub Package"
     runs-on: ubuntu-latest
