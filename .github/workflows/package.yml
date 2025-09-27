@@ -20,7 +20,7 @@ jobs:
           node-version: "lts/*"
           registry-url: "https://registry.npmjs.org"
           scope: "@mstssk"
-      - run: npm install -g npm@^11.5.1 # Ensure npm 11.5.1 or later is installed for OIDC
+      - run: npm install -g npm@^11.5.1 && npm -v # Ensure npm 11.5.1 or later is installed for OIDC
       - run: npm cit
       - run: echo "TAG=$(node .github/workflows/publish-tag.js ${GITHUB_REF#refs/*/})" >> $GITHUB_ENV
       - name: Publish --tag ${{ env.TAG }} ${{ env.DRY_RUN }}
