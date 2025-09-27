@@ -24,7 +24,7 @@ jobs:
       - run: echo "TAG=$(node .github/workflows/publish-tag.js ${GITHUB_REF#refs/*/})" >> $GITHUB_ENV
       - name: Publish --tag ${{ env.TAG }} ${{ env.DRY_RUN }}
         run: |
-          npx can-npm-publish
+          npx can-npm-publish --verbose
           npm ci
           npm run build
           npm publish --tag $TAG $DRY_RUN
@@ -43,7 +43,7 @@ jobs:
       - run: echo "TAG=$(node .github/workflows/publish-tag.js ${GITHUB_REF#refs/*/})" >> $GITHUB_ENV
       - name: Publish --tag ${{ env.TAG }} ${{ env.DRY_RUN }}
         run: |
-          npx can-npm-publish
+          npx can-npm-publish --verbose
           npm ci
           npm run build
           npm publish --tag $TAG $DRY_RUN
