@@ -1,10 +1,10 @@
 import { test, expect, beforeEach, afterEach } from "vitest";
 
-const fs = require("node:fs").promises;
-const path = require("node:path");
-const { globSync } = require("glob");
-const { copyfiles } = require("./utils");
-const { cleandir } = require("../");
+import * as fs from "node:fs/promises";
+import * as path from "node:path";
+import { globSync } from "glob";
+import { copyfiles } from "./utils";
+import { cleandir } from "../";
 
 const TARGET_DIR1 = "./test/target1";
 const TARGET_DIR2 = "./test/target2";

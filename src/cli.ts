@@ -1,4 +1,4 @@
-import { cleandir } from "./cleandir";
+import { cleandir } from "./cleandir.js";
 
 const args = process.argv.slice(2);
 if (args.length === 0) {
