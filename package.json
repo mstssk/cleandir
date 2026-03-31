@@ -37,7 +37,7 @@
   "devDependencies": {
     "@types/node": "^24.10.4",
     "copyfiles": "^2.4.1",
-    "glob": "^13.0.0",
+    "glob": "^13.0.6",
     "prettier": "^3.7.4",
     "semver": "^7.7.3",
     "typescript": "^5.9.3",
