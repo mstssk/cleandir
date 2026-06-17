@@ -27,12 +27,10 @@
     "lib/"
   ],
   "scripts": {
-    "prebuild": "rm -rf lib/*",
-    "build": "tsc",
+    "build": "rm -rf lib/* && tsc",
     "fmt": "prettier --write .",
     "lint": "prettier --check .",
-    "pretest": "npm run build",
-    "test": "vitest --run"
+    "test": "npm run build && vitest --run"
   },
   "devDependencies": {
     "@types/node": "^24.12.0",
