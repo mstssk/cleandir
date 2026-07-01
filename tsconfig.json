@@ -8,6 +8,7 @@
     "moduleResolution": "NodeNext",
     "declaration": true,
     "outDir": "lib",
+    "rootDir": "src",
     "strict": true,
 
     /* Additional Checks */
