@@ -1,8 +1,8 @@
 import { test, expect, beforeEach, afterEach } from "vitest";
 
 import * as fs from "node:fs/promises";
+import { globSync } from "node:fs";
 import * as path from "node:path";
-import { globSync } from "glob";
 import { copyfiles } from "./utils";
 import { cleandir } from "../";
 
@@ -28,7 +28,8 @@ expect.extend({
    * @param {string[]} expected Contained file paths.
    */
   onlyContains(dir, expected) {
-    const files = globSync(`${dir}/**/*`, { dot: true })
+    // node:fs's globSync has no `dot` option, so match dotfiles explicitly.
+    const files = globSync(`${dir}/**/{*,.*}`)
       .map((f) => path.relative(dir, f))
       .sort();
     expected = expected.map((f) => path.normalize(f)).sort(); // for Windows path segment separator.
