@@ -3,16 +3,15 @@ import { test, expect, beforeEach, afterEach } from "vitest";
 import * as fs from "node:fs/promises";
 import { globSync } from "node:fs";
 import * as path from "node:path";
-import { copyfiles } from "./utils";
 import { cleandir } from "../";
 
 const TARGET_DIR1 = "./test/target1";
 const TARGET_DIR2 = "./test/target2";
 
 beforeEach(async () => {
-  const opt = { up: 2, all: true, error: true };
-  await copyfiles(["./test/fixture1/**/*", TARGET_DIR1], opt);
-  await copyfiles(["./test/fixture2/**/*", TARGET_DIR2], opt);
+  const opt = { recursive: true };
+  await fs.cp("./test/fixture1", TARGET_DIR1, opt);
+  await fs.cp("./test/fixture2", TARGET_DIR2, opt);
 });
 
 afterEach(async () => {
