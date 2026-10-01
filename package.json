@@ -33,7 +33,7 @@
     "test": "npm run build && vitest --run"
   },
   "devDependencies": {
-    "@types/node": "^24.13.2",
+    "@types/node": "^24.13.6",
     "prettier": "^3.8.4",
     "semver": "^7.8.5",
     "typescript": "^6.0.3",
