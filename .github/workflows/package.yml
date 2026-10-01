@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: "lts/*"
           registry-url: "https://registry.npmjs.org"
@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - run: node .github/workflows/prepare_github_package.js
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: "lts/*"
           registry-url: "https://npm.pkg.github.com"
